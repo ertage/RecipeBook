@@ -4,20 +4,16 @@ import {
   OnInit,
   HostListener,
   HostBinding,
-  Renderer2,
-  AfterViewInit,
-  ViewChildren,
-  QueryList,
-  AfterContentInit
+  Renderer2
 } from '@angular/core';
 
 @Directive({
   selector: '[appDropdownDirective]',
 })
-export class DropdownDirective implements OnInit, AfterViewInit, AfterContentInit {
+export class DropdownDirective implements OnInit{
 
   @HostBinding('class.show') isShow = false;
-  @ViewChildren(DropdownDirective) children: any;
+  childrenDropDown: any;
 
   constructor(
     private elementRef: ElementRef,
@@ -25,39 +21,25 @@ export class DropdownDirective implements OnInit, AfterViewInit, AfterContentIni
   }
 
   ngOnInit() {
+    this.childrenDropDown = this.elementRef.nativeElement.children[1];
+    this.removeClass(this.childrenDropDown, 'show');
   }
 
-  ngAfterViewInit() {
-    // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    // Add 'implements AfterViewInit' to the class.
-    console.log(this.children)
-  }
-
-  ngAfterContentInit() {
-    // Called after ngOnInit when the component's or directive's content has been initialized.
-    // Add 'implements AfterContentInit' to the class.
-    console.log(this.children)
-  }
   @HostListener('click') toogleOpen() {
-    this.isShow = !this.isShow;
+   // this.isShow = !this.isShow;  toggle class for directive elemebt
+    if (this.childrenDropDown.classList.contains('show')) {
+      this.removeClass(this.childrenDropDown, 'show')
+    } else {
+      this.addClass(this.childrenDropDown, 'show');
+    }
  }
 
-  // Renderer2 method
-  // @HostListener('click') toogleOpen() {
-  //   if (this.elementRef.nativeElement.classList.contains('show')) {
-  //     this.removeClass('show')
-  //   }else {
-  //     this.addClass('show')
-  //   }
-  // }
+  addClass(element, className) {
+    this.renderer.addClass(element, className);
+  }
 
-  // addClass(className){
-  //   this.renderer.addClass(this.elementRef.nativeElement, className);
-  // }
-
-  // removeClass(className){
-  //   this.renderer.removeClass(this.elementRef.nativeElement, className);
-  // }
-
+  removeClass(element, className) {
+    this.renderer.removeClass(element, className);
+  }
 
 }
