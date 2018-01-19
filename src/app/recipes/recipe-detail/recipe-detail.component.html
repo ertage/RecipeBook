@@ -11,26 +11,27 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group">
+    <div class="btn-group" appDropdownDirective #dropdownMenu>
       <button 
         type="button"
-        class="btn btn-primary dropdown-toggle">Manage recipe
+        class="btn btn-primary dropdown-toggle"
+        >Manage recipe
         <span class="caret"></span>
-        </button>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#">
+            Add Ingredients to Shopping List
+          </a>
+          <a href="#">
+            Edit Recipe
+          </a>
+          <a href="#">
+            Delete Recipe
+          </a>
+        </li>
+      </ul>
     </div>
-    <ul class="dropdown-menu">
-      <li>
-        <a href="#">
-          Add Ingredients to Shopping List
-        </a>
-        <a href="#">
-          Edit Recipe
-        </a>
-         <a href="#">
-          Delete Recipe
-        </a>
-      </li>
-    </ul>
   </div>
 </div>
 <div class="row">
