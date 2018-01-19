@@ -1,15 +1,16 @@
 <pre>recepi item</pre>
 <a 
   href="#" 
-  class="list-group-item clearfix">
+  class="list-group-item clearfix"
+  (click)="onSelected()">
     <div class="pull-left">
-      <div class="list-group-item-heading">{{ name }}</div>
-      <div class="list-group-item-text">{{ description }}</div>
+      <div class="list-group-item-heading">{{ recipe.name }}</div>
+      <div class="list-group-item-text">{{ recipe.description }}</div>
     </div>
     <span class="pull-right">
       <img 
-        [src]="imageUrl"
-        alt="{{ name }}" 
+        [src]="recipe.imageUrl"
+        alt="{{ recipe.name }}" 
         class="img-responsive" 
         style="max-height: 50px">
     </span>
