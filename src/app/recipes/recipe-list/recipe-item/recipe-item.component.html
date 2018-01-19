@@ -1,3 +1,17 @@
-<p>
-  recipe-item works!
-</p>
+<pre>recepi item</pre>
+<a 
+  href="#" 
+  class="list-group-item clearfix">
+    <div class="pull-left">
+      <div class="list-group-item-heading">{{ name }}</div>
+      <div class="list-group-item-text">{{ description }}</div>
+    </div>
+    <span class="pull-right">
+      <img 
+        [src]="imageUrl"
+        alt="{{ name }}" 
+        class="img-responsive" 
+        style="max-height: 50px">
+    </span>
+</a>
+<br>
