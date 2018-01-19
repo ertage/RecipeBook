@@ -10,7 +10,7 @@ import {
 @Directive({
   selector: '[appDropdownDirective]',
 })
-export class DropdownDirective implements OnInit{
+export class DropdownDirective implements OnInit {
 
   @HostBinding('class.show') isShow = false;
   childrenDropDown: any;
