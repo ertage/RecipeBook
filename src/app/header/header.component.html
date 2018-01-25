@@ -18,20 +18,19 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Recipes</a></li>
-        <li><a href="#">Shopping list</a></li>
+        <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+        <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping list</a></li>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdownDirective>
-          <a 
-            href="#" 
+          <a style="cursor: pointer"
             class="dropdown-toggle" 
             data-toggle="dropdown">Manage <b class="caret"></b></a>
 
           <ul class="dropdown-menu">
-            <li><a href="#">Save data</a></li>
-            <li><a href="#">Fetch data</a></li>
+            <li><a style="cursor: pointer">Save data</a></li>
+            <li><a style="cursor: pointer">Fetch data</a></li>
           </ul>
         </li>
       </ul>

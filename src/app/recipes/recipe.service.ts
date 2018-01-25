@@ -10,6 +10,7 @@ export class RecipeService {
 
   private recipes: Recipe[] = [
     new Recipe(
+       1,
       'reecepi 1',
       'my first recipe',
       'http://www.seriouseats.com/recipes/assets_c/2016/12/20161201-crispy-roast-potatoes-29-thumb-1500xauto-435281.jpg',
@@ -19,9 +20,10 @@ export class RecipeService {
       ]),
 
     new Recipe(
-      'reecepi 2',
+      2,
+      'Burger',
       'my second recipe',
-      'http://www.seriouseats.com/recipes/assets_c/2016/12/20161201-crispy-roast-potatoes-29-thumb-1500xauto-435281.jpg',
+      'https://www.redrobin.com/content/dam/web/menu/tavern-menu/tavern-double-burger-1100.jpg',
       [
         new Ingredient('Bread', 2),
         new Ingredient('Meat', 20)
@@ -35,5 +37,22 @@ export class RecipeService {
 
   addIngredientToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  getRecipeById(id: number) {
+    const newRecipe: Recipe = {
+      id: null,
+      name: '',
+      description: '',
+      imageUrl: '',
+      ingredients: []
+    };
+    this.recipes.forEach((recipe: Recipe) => {
+      if (recipe.id === id) {
+        Object.assign(newRecipe, recipe);
+      }
+    })
+
+     return newRecipe;
   }
 }
