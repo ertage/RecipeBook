@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs/Subject';
 import { ShoppingListService } from './../shopping-list/shopping-list.services';
 import { Ingredient } from './../models/ingredient.model';
 import { Injectable } from '@angular/core';
@@ -6,11 +7,11 @@ import { Recipe } from '../models/recipe.model';
 @Injectable()
 export class RecipeService {
 
-  // recipeSelected = new EventEmitter<Recipe>();
+  recipeChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe(
-       1,
+       0,
       'reecepi 1',
       'my first recipe',
       'http://www.seriouseats.com/recipes/assets_c/2016/12/20161201-crispy-roast-potatoes-29-thumb-1500xauto-435281.jpg',
@@ -20,7 +21,7 @@ export class RecipeService {
       ]),
 
     new Recipe(
-      2,
+      1,
       'Burger',
       'my second recipe',
       'https://www.redrobin.com/content/dam/web/menu/tavern-menu/tavern-double-burger-1100.jpg',
@@ -54,5 +55,20 @@ export class RecipeService {
     })
 
      return newRecipe;
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }
